@@ -1,10 +1,25 @@
 local coor = {}
 
-function love.update(dt)
-    coor.x, coor.y = love.mouse.getPosition()
-    
+function love.load()
+ track_origin = love.graphics.newFont('/assets/fonts/NotoSerifJP-SemiBold.otf', 240)
+ Trail = require("draw")
 end
 
+function love.update(dt)
+    coor.x, coor.y = love.mouse.getPosition()
+        
+        Trail.build_char(coor.x,coor.y)
+         Trail.clear()   
+
+
+end
+
+
 function love.draw()
-    love.graphics.print("x: ".. coor.x .. " y: " .. coor.y)
+    
+    Trail.trace()
+    love.graphics.setFont(track_origin)
+    -- love.graphics.print("x: ".. coor.x .. " y: " .. coor.y )
+
+
  end
