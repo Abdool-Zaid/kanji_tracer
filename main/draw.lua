@@ -1,7 +1,7 @@
 local res = {}
 local char ={}
 local segment ={}
-res.brush_size =20
+res.brush_size =4
 res.arc=12
 res.brush_color ={255,255,255}
 local util = require("util")
@@ -31,19 +31,38 @@ function add_missed_space(x,y)
         
     else
         local last= char[#char]
-        util.sampler(last.x,last.y,x,y)
+        local missed = util.sampler(last.x,last.y,x,y)
+            for _, value in ipairs(missed) do
+                table.insert(segment,value)
+            end
     end
 end
 
 function draw_char()
-    for _, segments in ipairs(char) do
-        for _,square in ipairs(segments) do
+    love.graphics.setLineWidth(res.brush_size)
+    for i, segments in ipairs(char) do
+        for j,square in ipairs(segments) do
             love.graphics.setColor(res.brush_color[1],res.brush_color[2],res.brush_color[3]) 
-            love.graphics.rectangle("fill", square.x, square.y, res.brush_size, res.brush_size)
+            local x,y = Get_prior(i,j)
+            love.graphics.line(x,y,square.x,square.y)
         end
     end
 end
 
+function Get_prior(i,j)
+    local x, y =10, 10
+    local seg,blt=i,j 
+    if j==1 then
+        
+    else
+        seg= seg-1
+        blt=blt-1
+
+    end
+    -- x = char[seg][blt].x
+    -- y = char[seg][blt].y
+    return x,y
+end
 
 function res.trace()
     draw_char()
