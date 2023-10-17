@@ -9,7 +9,7 @@ function love.update(dt)
     coor.x, coor.y = love.mouse.getPosition()
         
         Trail.build_char(coor.x,coor.y)
-         Trail.clear()   
+         Trail.clear()
 
 
 end
@@ -19,7 +19,5 @@ function love.draw()
     
     Trail.trace()
     love.graphics.setFont(track_origin)
-    -- love.graphics.print("x: ".. coor.x .. " y: " .. coor.y )
 
-
- end
+end
