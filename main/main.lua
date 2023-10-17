@@ -1,7 +1,7 @@
 local coor = {}
 
 function love.load()
- track_origin = love.graphics.newFont('/assets/fonts/NotoSerifJP-SemiBold.otf', 240)
+--  track_origin = love.graphics.newFont('/assets/fonts/NotoSerifJP-SemiBold.otf', 240)
  Trail = require("draw")
 end
 
@@ -18,6 +18,6 @@ end
 function love.draw()
     
     Trail.trace()
-    love.graphics.setFont(track_origin)
+    -- love.graphics.setFont(track_origin)
 
 end
