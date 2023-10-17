@@ -22,7 +22,6 @@ function Write(input)
 function res.build_char(x,y)
     local yes = love.mouse.isDown(1)
             if yes then
-                Add_missed_space(x,y)
                 local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
             table.insert(segment, newSquare)   
             Mouse_released()
@@ -44,17 +43,6 @@ function res.build_char(x,y)
         love.graphics.print(p.x.." ".. p.y)
 end
 
-function Add_missed_space(x,y)
-    if #segment==0 then
-        
-    else
-        local last= char[#char]
-        local missed = util.sampler(last.x,last.y,x,y)
-            for _, value in ipairs(missed) do
-                table.insert(segment,value)
-            end
-    end
-end
 
 
 function Next_segment(i,j)

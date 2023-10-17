@@ -19,7 +19,7 @@ end
 function res.write(input)
     local inp= input
     love.graphics.setColor(0,0,0)
-    love.graphics.rectangle("fill",0,0,10000,10)
+    love.graphics.rectangle("fill",0,0,10000,20)
     love.graphics.setColor(res.brush_color[1],res.brush_color[2],res.brush_color[3])
     love.graphics.print(inp)
 end
