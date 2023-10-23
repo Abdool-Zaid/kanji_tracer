@@ -21,12 +21,11 @@ function Write(input)
  end
 function res.build_char(x,y)
     local yes = love.mouse.isDown(1)
-            if yes then
+            if yes==true then
                 local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
-            table.insert(segment, newSquare)   
-            res.Mouse_released()
-
+            table.insert(segment, newSquare)
         end
+        res.Mouse_released()
         
     end
   
