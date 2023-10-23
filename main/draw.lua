@@ -25,7 +25,6 @@ function res.build_char(x,y)
   
     function res.Mouse_released()
         table.insert(char,segment)
-        util.print_table(segment)
         segment={}
         Clear_temp()
         
@@ -33,10 +32,7 @@ end
 
 
 
-function Next_segment(i,j)
-    local c,s =i, j+1
-    -- p.x,p.y= char[c][s].x, char[c][s].y
-end
+
 
 
 function Draw_char()
@@ -48,8 +44,7 @@ function Draw_char()
             Draw_line(square.x,square.y)
             int =j
         end
-        -- clear
-        Next_segment(i,int)
+       point_count=0
         
     end
 end
