@@ -24,19 +24,13 @@ function res.build_char(x,y)
             if yes then
                 local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
             table.insert(segment, newSquare)   
-            Mouse_released()
+            res.Mouse_released()
 
         end
         
     end
-    
-    function love.mousereleased(x, y, button)
-        if button == 1 then
-            
-            Mouse_released()
-        end
-    end
-    function Mouse_released()
+  
+    function res.Mouse_released()
         table.insert(char,segment)
         segment={}
         Clear_temp()

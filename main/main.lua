@@ -14,6 +14,13 @@ function love.update(dt)
 
 end
 
+function love.mousereleased(x,y,button)
+    if button == 1 then
+            
+        Trail.Mouse_released()
+    end
+    
+end
 
 function love.draw()
     
