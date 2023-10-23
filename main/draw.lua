@@ -1,6 +1,7 @@
 local res = {}
 local char ={}
 local segment ={}
+local temp_line={}
 local point_count =0
 local p={x=-1,y=-1}
 res.brush_size =4
@@ -13,13 +14,13 @@ end
 
 function res.build_char(x,y)
     local yes = love.mouse.isDown(1)
-
-            if yes==true then
+    
+    if yes==true then
+        Draw_temp(x,y)
                 local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
             table.insert(segment, newSquare)
 
         end
-        Draw_temp(x,y)
         
     end
   
@@ -29,10 +30,6 @@ function res.build_char(x,y)
         Clear_temp()
         
 end
-
-
-
-
 
 
 function Draw_char()
@@ -78,6 +75,21 @@ local x,y= Ix,Iy
 end
 
 function Draw_temp(x,y)
+    local coor = {x=x,y=y}
+    table.insert(temp_line,coor)
+    if #temp_line<2 then
+    else
+
+        for j =2, #temp_line, 1 do
+            local  i = j-1
+            if Check_points(temp_line[i].x,temp_line[i].y,temp_line[j].x,temp_line[j].y) == true then
+
+            print(temp_line[i].x.. ", ".. temp_line[i].y.. ", ".. temp_line[j].x .. ", ".. temp_line[j].y )
+                love.graphics.line(temp_line[i].x,temp_line[i].y,temp_line[j].x,temp_line[j].y)
+            end
+
+        end
+    end
 end
 
 function res.trace()
