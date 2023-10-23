@@ -20,8 +20,23 @@ function res.write(input)
     local inp= input
     love.graphics.setColor(0,0,0)
     love.graphics.rectangle("fill",0,0,10000,20)
-    love.graphics.setColor(res.brush_color[1],res.brush_color[2],res.brush_color[3])
+    love.graphics.setColor(1,1,1)
     love.graphics.print(inp)
 end
 
+function  res.print_table(table)
+    local arr = table
+    for key, value in pairs(arr) do
+        print("key: "..key.." value: " ..value.x .." , ".. value.y)
+    end
+end
+
+function res.print_matrix(table)
+    for key, arr in pairs(table) do
+        for index, value in pairs(arr) do
+            print("key: "..key.." index: "..index.. " value: " ..value.x .." , ".. value.y)
+            
+        end
+    end
+end
 return res

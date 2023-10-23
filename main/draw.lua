@@ -11,29 +11,24 @@ function res.test()
     return "working"
 end
 
-function Write(input)
-    local inp= input
-    love.graphics.setColor(0,0,0)
-    love.graphics.rectangle("fill",0,0,10000,10)
-    love.graphics.setColor(res.brush_color[1],res.brush_color[2],res.brush_color[3])
-    love.graphics.print(inp)
-    
- end
 function res.build_char(x,y)
     local yes = love.mouse.isDown(1)
+
             if yes==true then
                 local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
             table.insert(segment, newSquare)
+
         end
-        res.Mouse_released()
+        Draw_temp(x,y)
         
     end
   
     function res.Mouse_released()
         table.insert(char,segment)
+        util.print_table(segment)
         segment={}
         Clear_temp()
-        love.graphics.print(p.x.." ".. p.y)
+        
 end
 
 
@@ -41,7 +36,6 @@ end
 function Next_segment(i,j)
     local c,s =i, j+1
     -- p.x,p.y= char[c][s].x, char[c][s].y
-    Write(c.. "  " ..s)
 end
 
 
@@ -56,16 +50,20 @@ function Draw_char()
         end
         -- clear
         Next_segment(i,int)
-
+        
     end
 end
 function Check_points(x1,y1,x2,y2)
-   
+    
     if (x1==x2) and (y1==y2) then
         return false
     else
         return true
     end
+end
+
+function res.handle_right_click()
+    util.print_matrix(char)
 end
 
 function Draw_line(Ix,Iy)
@@ -84,12 +82,15 @@ local x,y= Ix,Iy
     end
 end
 
+function Draw_temp(x,y)
+end
 
 function res.trace()
+
     Draw_char()
 end
 function Clear_temp()
-    point_count=0 
+    point_count=0
 end
 function res.clear()
     Clr = love.keyboard.isDown( "space" )
