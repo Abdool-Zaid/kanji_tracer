@@ -16,7 +16,7 @@ function res.build_char(x,y)
     local yes = love.mouse.isDown(1)
     
     if yes==true then
-        Draw_temp(x,y)
+        Build_temp(x,y)
                 local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
             table.insert(segment, newSquare)
 
@@ -74,9 +74,12 @@ local x,y= Ix,Iy
     end
 end
 
-function Draw_temp(x,y)
+function Build_temp(x,y)
     local coor = {x=x,y=y}
     table.insert(temp_line,coor)
+end
+
+function Draw_temp()
     if #temp_line<2 then
     else
 
@@ -93,12 +96,15 @@ function Draw_temp(x,y)
 end
 
 function res.trace()
-
+    Draw_temp()
     Draw_char()
 end
+
 function Clear_temp()
     point_count=0
+    temp_line={}
 end
+
 function res.clear()
     Clr = love.keyboard.isDown( "space" )
     if Clr==true then
