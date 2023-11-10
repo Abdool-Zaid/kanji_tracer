@@ -74,10 +74,11 @@ local x,y= Ix,Iy
     end
 end
 
-function Build_temp(x,y)
-    local coor = {x=x,y=y}
-    table.insert(temp_line,coor)
+function Build_temp(x, y)
+    local newSquare = { x = x - res.brush_size / 2, y = y - res.brush_size / 2 }
+    table.insert(temp_line, newSquare)
 end
+
 
 function Draw_temp()
     if #temp_line<2 then
